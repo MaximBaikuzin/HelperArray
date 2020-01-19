@@ -1,0 +1,17 @@
+{
+  "name": "MaximBaikuzin/HelperArray",
+  "description": "",
+  "type": "library",
+  "keywords": ["php array helper"],
+  "homepage": "https://github.com/MaximBaikuzin/HelperArray",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Maxim Baikuzin",
+      "email": "maxim@baikuzin.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.0.0",
+  }
+}
