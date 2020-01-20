@@ -1,5 +1,5 @@
 <?php
-namespace Helper;
+namespace MaximBaikuzin\Helper;
 
 
 class HelperArray
@@ -14,6 +14,25 @@ class HelperArray
     public static function printPretty(array $arr): void
     {
         print('<pre>' . print_r($arr, true) . '</pre>');
+    }
+
+
+    /**
+     * Check if an array is multidimensional or if it is a single-line array.
+     *
+     * @param array $arr
+     *
+     * @return bool
+     */
+    public static function isMultidimensional(array $arr): bool
+    {
+        foreach ($arr as $v) {
+            if (is_array($v)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
 }
