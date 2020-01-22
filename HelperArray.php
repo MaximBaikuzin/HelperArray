@@ -2,10 +2,6 @@
 namespace MaximBaikuzin\Helper;
 
 
-use stdClass;
-
-
-
 class HelperArray
 {
 
@@ -43,11 +39,11 @@ class HelperArray
     /**
      * Convert deeply nested object to associative array.
      *
-     * @param stdClass $obj
+     * @param object $obj
      *
      * @return array
      */
-    public static function convertObjectToArray(StdClass $obj): array
+    public static function convertObjectToArray(object $obj): array
     {
         return json_decode(json_encode($obj), true);
     }
