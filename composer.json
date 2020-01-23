@@ -8,10 +8,17 @@
   "authors": [
     {
       "name": "Maxim Baikuzin",
-      "email": "maxim@baikuzin.com"
+      "email": "maxim@baikuzin.com",
+      "homepage": "https://baikuzin.com",
+      "role": "Developer"
     }
   ],
   "require": {
     "php": ">=7.0.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "MaximBaikuzin\\Helper": "/"
+    }
   }
 }
