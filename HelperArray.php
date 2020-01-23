@@ -48,4 +48,26 @@ class HelperArray
         return json_decode(json_encode($obj), true);
     }
 
+
+    /**
+     * Reindex an array so the new array starts with an index of $start
+     *
+     * @param array $arr
+     * @param int $start
+     *
+     * @return array
+     */
+    public static function reindex(array $arr, int $start = 0): array
+    {
+        $arr = array_values($arr);
+
+        if ($start > 0) {
+            $cnt = count($arr);
+            $keys = range($start, $start + $cnt + - 1);
+            $arr = array_combine($keys, $arr);
+        }
+
+        return $arr;
+    }
+
 }
