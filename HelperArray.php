@@ -70,4 +70,25 @@ class HelperArray
         return $arr;
     }
 
+
+    /**
+     * Delete all elements containing the value.
+     *
+     * @param array $arr
+     * @param $value
+     *
+     * @return array
+     */
+    public static function unsetByValue(array $arr, $value): array
+    {
+        do {
+            $key = array_search($value, $arr);
+            if ($key !== false) {
+                unset($arr[$key]);
+            }
+        } while ($key !== false);
+
+        return $arr;
+    }
+
 }
