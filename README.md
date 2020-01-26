@@ -8,3 +8,4 @@ HelperArray provides additional array functionality.
 | `convertObjectToArray` | Convert deeply nested object to associative array. |
 | `reindex` | Reindex an array so the new array starts with an index of $start. |
 | `unsetByValue` | Delete all elements containing the value. |
+| `getTop` | Get a several top values in a multidimensional array by key or a single-line array. |
