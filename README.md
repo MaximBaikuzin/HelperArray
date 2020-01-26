@@ -1,6 +1,14 @@
 # HelperArray
 Helper Array provides additional array functionality.
 
+
+## Installation
+
+```
+composer require maximbaikuzin/helperarray:^1.0.0
+```
+
+
 | Method | Description |
 | --- | --- |
 | `printPretty` | Pretty print is used to format the data. The data can be represented in a more readable form for humans by using pretty printing. |
