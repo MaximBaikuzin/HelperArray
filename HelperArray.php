@@ -1,4 +1,5 @@
 <?php
+
 namespace MaximBaikuzin\Helper;
 
 
@@ -50,7 +51,7 @@ class HelperArray
 
 
     /**
-     * Reindex an array so the new array starts with an index of $start
+     * Reindex an array so the new array starts with an index of $start.
      *
      * @param array $arr
      * @param int $start
@@ -62,9 +63,9 @@ class HelperArray
         $arr = array_values($arr);
 
         if ($start > 0) {
-            $cnt = count($arr);
-            $keys = range($start, $start + $cnt + - 1);
-            $arr = array_combine($keys, $arr);
+            $cnt  = count($arr);
+            $keys = range($start, $start + $cnt + -1);
+            $arr  = array_combine($keys, $arr);
         }
 
         return $arr;
@@ -87,6 +88,33 @@ class HelperArray
                 unset($arr[$key]);
             }
         } while ($key !== false);
+
+        return $arr;
+    }
+
+
+    /**
+     * Get a several top values in a multidimensional array by key or a single-line array.
+     *
+     * If two values compare as equal, their relative order in the sorted array is undefined.
+     *
+     * @param array $arr
+     * @param int $length
+     * @param null|int|string $key
+     *
+     * @return array
+     */
+    public static function getTop(array $arr, int $length, $key = null)
+    {
+        if (self::isMultidimensional($arr)) {
+            $values = array_column($arr, $key);
+            array_multisort($values, SORT_DESC, SORT_REGULAR, $arr);
+        }
+        else {
+            rsort($arr);
+        }
+
+        $arr = array_slice($arr,0, $length);
 
         return $arr;
     }
