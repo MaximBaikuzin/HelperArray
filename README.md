@@ -1,5 +1,5 @@
 # HelperArray
-HelperArray provides additional array functionality.
+Helper Array provides additional array functionality.
 
 | Method | Description |
 | --- | --- |
