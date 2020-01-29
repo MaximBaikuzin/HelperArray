@@ -119,4 +119,46 @@ class HelperArray
         return $arr;
     }
 
+
+    /**
+     * Get the difference of two multidimensional arrays.
+     * Returns an array containing all the entries from array1 that are not present in array2.
+     * By default the type conversion does not take place. The $strict_type is used with false to disable strict mode.
+     *
+     * @param $array1
+     * @param $array2
+     * @param bool $strict_type
+     *
+     * @return array
+     */
+    public static function diff($array1, $array2, $strict_type = true): array
+    {
+        $difference = array();
+        foreach ($array1 as $k => $v) {
+            if (is_array($v)) {
+                if (!array_key_exists($k, $array2) OR !is_array($array2[$k])) {
+                    $difference[$k] = $v;
+                } else {
+                    $new_diff = self::diff($v, $array2[$k]);
+                    if (!empty($new_diff)) {
+                        $difference[$k] = $new_diff;
+                    }
+                }
+            }
+            else {
+                if (!array_key_exists($k, $array2)) {
+                    $difference[$k] = $v;
+                }
+                elseif ($strict_type AND $array2[$k] !== $v) {
+                    $difference[$k] = $v;
+                }
+                elseif (!$strict_type AND $array2[$k] != $v) {
+                    $difference[$k] = $v;
+                }
+            }
+        }
+
+        return $difference;
+    }
+
 }
