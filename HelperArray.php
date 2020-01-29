@@ -38,6 +38,33 @@ class HelperArray
 
 
     /**
+     * Check if two multidimensional arrays or single-line arrays is different.
+     * By default the type conversion does not take place. The $strict_type is used with false to disable strict mode.
+     *
+     *
+     * @param $array1
+     * @param $array2
+     * @param bool $strict_type
+     *
+     * @return bool
+     */
+    public static function isDifferent($array1, $array2, $strict_type = true): bool
+    {
+        $result = self::getDifference($array1, $array2, $strict_type);
+        if (!empty($result)) {
+            return true;
+        }
+
+        $result = self::getDifference($array2, $array1, $strict_type);
+        if (!empty($result)) {
+            return true;
+        }
+
+        return false;
+    }
+
+
+    /**
      * Convert deeply nested object to associative array.
      *
      * @param object $obj
@@ -121,7 +148,7 @@ class HelperArray
 
 
     /**
-     * Get the difference of two multidimensional arrays.
+     * Get the difference of two multidimensional arrays or single-line arrays.
      * Returns an array containing all the entries from array1 that are not present in array2.
      * By default the type conversion does not take place. The $strict_type is used with false to disable strict mode.
      *
@@ -131,7 +158,7 @@ class HelperArray
      *
      * @return array
      */
-    public static function diff($array1, $array2, $strict_type = true): array
+    public static function getDifference($array1, $array2, $strict_type = true): array
     {
         $difference = array();
         foreach ($array1 as $k => $v) {
@@ -139,7 +166,7 @@ class HelperArray
                 if (!array_key_exists($k, $array2) OR !is_array($array2[$k])) {
                     $difference[$k] = $v;
                 } else {
-                    $new_diff = self::diff($v, $array2[$k]);
+                    $new_diff = self::getDifference($v, $array2[$k]);
                     if (!empty($new_diff)) {
                         $difference[$k] = $new_diff;
                     }
@@ -160,5 +187,11 @@ class HelperArray
 
         return $difference;
     }
+
+
+
+
+
+
 
 }
